@@ -18,3 +18,6 @@ target/
 
 # Pre-commit .venv
 .venv/
+
+# Enigma interpreter
+enigma
