@@ -7,14 +7,13 @@ pub enum Direction {
 }
 
 pub struct State {
-    pub identifier: i32,
     pub operations: HashMap<i32, StateOperation>,
 }
 
 pub struct StateOperation {
     pub write: Option<i32>,
     pub move_head: Option<Direction>,
-    pub next_state: Option<i32>,
+    pub next_state: Option<String>,
 }
 
 pub fn build_binary_state(
@@ -24,8 +23,5 @@ pub fn build_binary_state(
     let mut operations = HashMap::new();
     operations.insert(0, zero_state_operation);
     operations.insert(1, one_state_operation);
-    State {
-        identifier: 0,
-        operations,
-    }
+    State { operations }
 }
