@@ -21,3 +21,6 @@ target/
 
 # Enigma interpreter
 enigma
+
+# VS Code
+.vscode/
