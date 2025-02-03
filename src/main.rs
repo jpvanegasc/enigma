@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
-use turing::states::build_binary_state;
-
+use crate::turing::machine::Machine;
+use crate::turing::states::build_binary_state;
 use crate::turing::states::Direction;
 use crate::turing::states::State;
 use crate::turing::states::StateOperation;
@@ -62,43 +62,7 @@ fn main() {
         },
     );
 
-    let mut tape = vec![0, 1, 1, 0, 1, 1, 1];
-    let mut head = 0;
-    let mut state = &q0;
-
-    loop {
-        println!("{:?}", tape);
-        println!("head at: {:?}", head);
-        println!("current state: {:?}", state.identifier);
-        let current_value = tape[head];
-        let operation = state.operations.get(&current_value).unwrap();
-        if let Some(write) = operation.write {
-            tape[head] = write;
-        }
-        if let Some(move_head) = operation.move_head {
-            match move_head {
-                Direction::Left => {
-                    head -= 1;
-                }
-                Direction::Right => {
-                    head += 1;
-                }
-            }
-        }
-        if let Some(next_state) = operation.next_state {
-            if next_state == -1 {
-                break;
-            }
-            match next_state {
-                0 => state = &q0,
-                1 => state = &q1,
-                2 => state = &q2,
-                3 => state = &q3,
-                -1 => state = &halt,
-                _ => state = &halt,
-            }
-        }
-    }
-    println!("\n{:?}", tape);
-    println!("halted");
+    let mut machine = Machine::new(vec![0, 1, 1, 0, 1, 1, 1], vec![q0, q1, q2, q3, halt]);
+    machine.run();
+    println!("{:?}", machine.tape);
 }
