@@ -10,6 +10,9 @@ VENV_DIR ?= .venv
 VENV_ACTIVATE = $(VENV_DIR)/bin/activate
 VENV_RUN = . $(VENV_ACTIVATE);
 
+run: enigma ## Run the enigma interpreter
+	./enigma
+
 lint: $(VENV_DIR) ## Run linters
 	$(VENV_RUN) pre-commit run --all-files
 	cargo clippy
