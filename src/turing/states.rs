@@ -16,3 +16,16 @@ pub struct StateOperation {
     pub move_head: Option<Direction>,
     pub next_state: Option<i32>,
 }
+
+pub fn build_binary_state(
+    zero_state_operation: StateOperation,
+    one_state_operation: StateOperation,
+) -> State {
+    let mut operations = HashMap::new();
+    operations.insert(0, zero_state_operation);
+    operations.insert(1, one_state_operation);
+    State {
+        identifier: 0,
+        operations,
+    }
+}
