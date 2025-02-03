@@ -1,6 +1,6 @@
 all: enigma
 
-enigma: src/main.rs  ## Compile the enigma interpreter
+enigma: src/* ## Compile the enigma interpreter
 	rustc src/main.rs -o enigma
 
 .PHONY:

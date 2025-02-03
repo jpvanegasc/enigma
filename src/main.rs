@@ -1,21 +1,10 @@
 use std::collections::HashMap;
 
-#[derive(Clone, Copy, Debug)]
-enum Direction {
-    Left,
-    Right,
-}
+use crate::turing::states::Direction;
+use crate::turing::states::State;
+use crate::turing::states::StateOperation;
 
-struct State {
-    identifier: i32,
-    operations: HashMap<i32, StateOperation>,
-}
-
-struct StateOperation {
-    write: Option<i32>,
-    move_head: Option<Direction>,
-    next_state: Option<i32>,
-}
+pub mod turing;
 
 fn main() {
     let halt = State {
