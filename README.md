@@ -8,7 +8,7 @@
 ### Clone and Build
 ```shell
 # Clone the repository
-git clone https://github.com/your-username/enigma.git
+git clone https://github.com/jpvanegasc/enigma.git
 cd enigma
 
 # Build the enigma executable
