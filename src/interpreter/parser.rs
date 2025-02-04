@@ -2,8 +2,8 @@ use std::fs;
 
 #[derive(Debug)]
 pub struct RawState {
-    identifier: String,
-    lines: Vec<String>,
+    pub identifier: String,
+    pub lines: Vec<String>,
 }
 
 pub struct Program {

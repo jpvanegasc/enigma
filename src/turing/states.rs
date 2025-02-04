@@ -6,10 +6,12 @@ pub enum Direction {
     Right,
 }
 
+#[derive(Debug)]
 pub struct State {
     pub operations: HashMap<i32, StateOperation>,
 }
 
+#[derive(Debug)]
 pub struct StateOperation {
     pub write: Option<i32>,
     pub move_head: Option<Direction>,
