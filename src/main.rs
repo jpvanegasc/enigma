@@ -76,7 +76,12 @@ fn main() {
     println!("{:?}", machine.tape);
     println!("halted");
 
-    let program = parse_file("examples/unary-addition.en");
+    let program = {
+        match parse_file("examples/unary-addition.en") {
+            Ok(program) => program,
+            Err(e) => panic!("Error parsing file: {}", e),
+        }
+    };
     println!("{:?}", program.tape);
     println!("{:?}", program.initial_state);
     println!("{:?}", program.states);
