@@ -5,6 +5,9 @@ use crate::turing::states::build_binary_state;
 use crate::turing::states::Direction;
 use crate::turing::states::StateOperation;
 
+use crate::interpreter::parser::parse_file;
+
+pub mod interpreter;
 pub mod turing;
 
 fn main() {
@@ -71,5 +74,10 @@ fn main() {
     );
     machine.run();
     println!("{:?}", machine.tape);
-    println!("halted")
+    println!("halted");
+
+    let program = parse_file("examples/unary-addition.en");
+    println!("{:?}", program.tape);
+    println!("{:?}", program.initial_state);
+    println!("{:?}", program.states);
 }
