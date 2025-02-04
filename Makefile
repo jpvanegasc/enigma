@@ -11,7 +11,7 @@ VENV_ACTIVATE = $(VENV_DIR)/bin/activate
 VENV_RUN = . $(VENV_ACTIVATE);
 
 run: enigma ## Run the enigma interpreter
-	./enigma
+	./enigma examples/unary-addition.en
 
 lint: $(VENV_DIR) ## Run linters
 	$(VENV_RUN) pre-commit run --all-files
