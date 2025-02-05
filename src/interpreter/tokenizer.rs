@@ -4,6 +4,7 @@ use std::fs;
 #[derive(Debug)]
 enum TokenType {
     SingleLineComment,
+    NewLine,
     StateSymbol,
     Identifier,
     Tab,
@@ -83,9 +84,14 @@ impl Token {
         tokens
     }
     fn tokenize(file_contents: String) -> Vec<Token> {
+        let lowercase_contents = file_contents.to_lowercase();
         let mut tokens = Vec::new();
-        for line in file_contents.split("\n") {
+        for line in lowercase_contents.split("\n") {
             if line.is_empty() {
+                tokens.push(Token {
+                    token_type: TokenType::NewLine,
+                    value: "\n".to_string(),
+                });
                 continue;
             }
             tokens.extend(Token::tokenize_line(line.to_string()));
