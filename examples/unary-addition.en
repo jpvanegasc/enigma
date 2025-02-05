@@ -1,8 +1,5 @@
 # Unary addition calculator
 
-initial: 0 1 1 0 1 1 1
-start: q0
-
 state q0
     0 -> null, move right, goto q0
     1 -> null, move right, goto q1
@@ -19,4 +16,4 @@ state q3
     0 -> null, null, null
     1 -> write 0, null, goto halt
 
-# TODO: this comment shouldn't be needed
+q0(0,1,1,0,1,1,1)
