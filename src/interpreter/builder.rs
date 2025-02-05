@@ -1,8 +1,8 @@
+use crate::common::Direction;
+use crate::common::State;
+use crate::common::StateOperation;
 use crate::interpreter::parser::Program;
-use crate::turing::machine::Machine;
-use crate::turing::states::Direction;
-use crate::turing::states::State;
-use crate::turing::states::StateOperation;
+use crate::turing::Machine;
 use std::collections::HashMap;
 
 pub fn build_machine(program: Program) -> Machine {

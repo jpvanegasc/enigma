@@ -3,6 +3,7 @@ use crate::interpreter::parser::parse_file;
 use std::env;
 use std::process;
 
+pub mod common;
 pub mod interpreter;
 pub mod turing;
 
