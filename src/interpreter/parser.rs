@@ -1,4 +1,4 @@
-use std::fs;
+// Deprecated, moving logic to tokenizer.rs, parser.rs, and tree.rs
 
 #[derive(Debug)]
 pub struct RawState {
@@ -58,12 +58,5 @@ fn get_program(file_contents: &str) -> Program {
         tape,
         initial_state,
         states,
-    }
-}
-
-pub fn parse_file(file_path: &str) -> Result<Program, &'static str> {
-    match fs::read_to_string(file_path) {
-        Ok(contents) => Ok(get_program(&contents)),
-        Err(_) => Err("Error reading file"),
     }
 }
