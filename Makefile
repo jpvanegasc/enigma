@@ -1,7 +1,7 @@
 all: enigma
 
-enigma: src/* ## Compile the enigma interpreter
-	rustc src/main.rs -o enigma
+target/debug/enigma: src/* ## Compile the enigma interpreter
+	cargo build
 
 .PHONY:
 .SILENT:
@@ -10,8 +10,8 @@ VENV_DIR ?= .venv
 VENV_ACTIVATE = $(VENV_DIR)/bin/activate
 VENV_RUN = . $(VENV_ACTIVATE);
 
-run: enigma ## Run the enigma interpreter
-	./enigma examples/unary-addition.en
+run: target/debug/enigma ## Run the enigma interpreter
+	cargo run examples/unary-addition.en
 
 lint: $(VENV_DIR) ## Run linters
 	$(VENV_RUN) pre-commit run --all-files
