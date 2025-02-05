@@ -1,5 +1,6 @@
-use crate::interpreter::builder::build_machine;
-use crate::interpreter::parser::parse_file;
+extern crate regex;
+
+use crate::interpreter::tokenizer::parse_file;
 use std::env;
 use std::process;
 
@@ -16,14 +17,12 @@ fn main() {
     }
     let filename = &args[1];
 
-    let program = {
+    let tokens = {
         match parse_file(filename) {
-            Ok(program) => program,
+            Ok(tokens) => tokens,
             Err(e) => panic!("Error parsing file: {}", e),
         }
     };
 
-    let mut machine = build_machine(program);
-    machine.run();
-    println!("{:?}", machine.tape);
+    println!("{:?}", tokens);
 }

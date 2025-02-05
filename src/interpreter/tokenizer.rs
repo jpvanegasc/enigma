@@ -1,5 +1,5 @@
-use std::fs;
 use regex::Regex;
+use std::fs;
 
 #[derive(Debug)]
 enum TokenType {
