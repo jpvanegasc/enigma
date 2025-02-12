@@ -1,4 +1,4 @@
-all: enigma
+all: target/debug/enigma
 
 target/debug/enigma: src/* ## Compile the enigma interpreter
 	cargo build
