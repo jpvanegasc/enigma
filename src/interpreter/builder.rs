@@ -1,7 +1,7 @@
 use crate::common::Direction;
 use crate::common::State;
 use crate::common::StateOperation;
-use crate::interpreter::parser::Program;
+use crate::interpreter::parser_old::Program;
 use crate::turing::Machine;
 use std::collections::HashMap;
 
