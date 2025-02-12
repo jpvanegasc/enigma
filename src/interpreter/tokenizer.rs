@@ -1,8 +1,8 @@
 use regex::Regex;
 use std::fs;
 
-#[derive(Debug)]
-enum TokenType {
+#[derive(Debug, PartialEq)]
+pub enum TokenType {
     SingleLineComment,
     NewLine,
     StateSymbol,
@@ -15,15 +15,14 @@ enum TokenType {
     RightSymbol,
     LeftSymbol,
     GotoSymbol,
-    RunSymbol,
     LParentheses,
     RParentheses,
 }
 
 #[derive(Debug)]
 pub struct Token {
-    token_type: TokenType,
-    value: String,
+    pub token_type: TokenType,
+    pub value: String,
 }
 impl Token {
     fn get_token(raw_token: &str) -> Token {
@@ -38,7 +37,6 @@ impl Token {
             ")" => TokenType::RParentheses,
             "," => TokenType::Comma,
             "null" => TokenType::Null,
-            "run" => TokenType::RunSymbol,
 
             _ => TokenType::Identifier,
         };
