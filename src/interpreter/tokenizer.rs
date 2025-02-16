@@ -7,6 +7,7 @@ pub enum TokenType {
     NewLine,
     StateSymbol,
     Identifier,
+    Colon,
     Tab,
     ArrowSymbol,
     Null,
@@ -37,6 +38,7 @@ impl Token {
             ")" => TokenType::RParentheses,
             "," => TokenType::Comma,
             "null" => TokenType::Null,
+            ":" => TokenType::Colon,
 
             _ => TokenType::Identifier,
         };
