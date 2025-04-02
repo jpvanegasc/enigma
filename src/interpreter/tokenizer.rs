@@ -3,6 +3,7 @@ use std::fs;
 
 #[derive(Debug, PartialEq)]
 pub enum TokenType {
+    Root,
     SingleLineComment,
     NewLine,
     StateSymbol,
@@ -95,6 +96,10 @@ impl Token {
                 continue;
             }
             tokens.extend(Token::tokenize_line(line.to_string()));
+            tokens.push(Token {
+                token_type: TokenType::NewLine,
+                value: "\n".to_string(),
+            });
         }
         tokens
     }
