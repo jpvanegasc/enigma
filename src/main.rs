@@ -1,5 +1,6 @@
 extern crate regex;
 
+use crate::interpreter::parser::get_abstract_syntax_tree;
 use crate::interpreter::tokenizer::parse_file;
 use std::env;
 use std::process;
@@ -24,5 +25,6 @@ fn main() {
         }
     };
 
-    println!("{:?}", tokens);
+    let ast = get_abstract_syntax_tree(tokens);
+    println!("{:?}", ast);
 }
