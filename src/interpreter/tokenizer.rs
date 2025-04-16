@@ -4,7 +4,6 @@ use std::fs;
 #[derive(Debug, PartialEq)]
 pub enum TokenType {
     Root,
-    SingleLineComment,
     NewLine,
     StateSymbol,
     Identifier,
@@ -51,10 +50,6 @@ impl Token {
     fn tokenize_line(line: String) -> Vec<Token> {
         let mut tokens = Vec::new();
         if line.chars().nth(0) == Some('#') {
-            tokens.push(Token {
-                token_type: TokenType::SingleLineComment,
-                value: line.to_string(),
-            });
             return tokens;
         }
 
