@@ -24,3 +24,5 @@ enigma
 
 # VS Code
 .vscode/
+
+.DS_Store
