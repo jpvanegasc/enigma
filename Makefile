@@ -6,15 +6,16 @@ target/debug/enigma: src/* ## Compile the enigma interpreter
 .PHONY:
 .SILENT:
 
-VENV_DIR ?= .venv
-VENV_ACTIVATE = $(VENV_DIR)/bin/activate
-VENV_RUN = . $(VENV_ACTIVATE);
+init: ## Initialize pre-commit hooks
+	uv venv
+	uv pip install pre-commit
+	uv run pre-commit install
 
 run: target/debug/enigma ## Run the enigma interpreter
 	cargo run examples/unary-addition.en
 
-lint: $(VENV_DIR) ## Run linters
-	$(VENV_RUN) pre-commit run --all-files
+lint: ## Run linters
+	uv run pre-commit run --all-files
 	cargo clippy
 
 help: ## Show this help message
