@@ -67,7 +67,7 @@ impl Token {
             let function_args = captures.get(2).unwrap().as_str().split(",");
             tokens.push(Token::get_token(function_name));
             tokens.push(Token::get_token("("));
-            tokens.extend(function_args.map(|arg| Token::get_token(arg)));
+            tokens.extend(function_args.map(Token::get_token));
             tokens.push(Token::get_token(")"));
             return tokens;
         }
