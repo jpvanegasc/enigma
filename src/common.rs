@@ -18,12 +18,24 @@ pub struct StateOperation {
     pub next_state: Option<String>,
 }
 
+impl StateOperation {
+    pub fn new(
+        write: Option<i32>,
+        move_head: Option<Direction>,
+        next_state: Option<String>,
+    ) -> StateOperation {
+        StateOperation {
+            write,
+            move_head,
+            next_state,
+        }
+    }
+}
+
 pub fn build_binary_state(
     zero_state_operation: StateOperation,
     one_state_operation: StateOperation,
 ) -> State {
-    let mut operations = HashMap::new();
-    operations.insert(0, zero_state_operation);
-    operations.insert(1, one_state_operation);
+    let operations = HashMap::from([(0, zero_state_operation), (1, one_state_operation)]);
     State { operations }
 }

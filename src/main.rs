@@ -1,7 +1,10 @@
 extern crate regex;
 
+use crate::common::Direction;
+use crate::common::StateOperation;
 use crate::interpreter::parser::get_abstract_syntax_tree;
 use crate::interpreter::tokenizer::parse_file;
+use std::collections::HashMap;
 use std::env;
 use std::process;
 
@@ -47,4 +50,19 @@ fn main() {
     //         tape_definitions.push(result);
     //     }
     // }
+
+    let state = common::build_binary_state(
+        StateOperation::new(None, Some(Direction::Right), Some(String::from("q"))),
+        StateOperation::new(Some(0), None, Some(String::from("halt"))),
+    );
+
+    let mut machine = turing::Machine::new(
+        vec![0, 0, 1],
+        HashMap::from([(String::from("q"), state)]),
+        String::from("q"),
+    );
+
+    machine.current_status();
+    machine.run();
+    machine.current_status();
 }

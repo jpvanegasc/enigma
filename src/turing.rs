@@ -43,10 +43,33 @@ impl Machine {
             if operation.next_state.is_some() {
                 let next_state = operation.next_state.as_ref().unwrap();
                 if next_state == "halt" {
+                    self.current_state = String::from("halt");
                     break;
                 }
                 self.current_state = String::from(next_state);
             }
         }
+    }
+
+    pub fn current_status(&self) {
+        if self.tape.len() > 20 {
+            println!("Tape is to big to display, sorry");
+            return;
+        }
+
+        print!("[ ");
+        for x in &self.tape {
+            print!("{x} ");
+        }
+        print!("] state: {0}\n  ", self.current_state);
+
+        for i in 0..self.tape.len() {
+            if i == self.head {
+                print!("^ ");
+            } else {
+                print!("  ");
+            }
+        }
+        println!();
     }
 }
