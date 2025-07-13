@@ -52,8 +52,8 @@ fn main() {
     // }
 
     let state = common::build_binary_state(
-        StateOperation::new(None, Some(Direction::Right), Some(String::from("q"))),
-        StateOperation::new(Some(0), None, Some(String::from("halt"))),
+        StateOperation::new(None, Some(Direction::Right), String::from("q")),
+        StateOperation::new(Some(0), None, String::from("halt")),
     );
 
     let mut machine = turing::Machine::new(

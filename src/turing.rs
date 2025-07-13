@@ -40,13 +40,9 @@ impl Machine {
                 }
             }
 
-            if operation.next_state.is_some() {
-                let next_state = operation.next_state.as_ref().unwrap();
-                if next_state == "halt" {
-                    self.current_state = String::from("halt");
-                    break;
-                }
-                self.current_state = String::from(next_state);
+            self.current_state = String::from(&operation.next_state);
+            if self.current_state == "halt" {
+                break;
             }
         }
     }
