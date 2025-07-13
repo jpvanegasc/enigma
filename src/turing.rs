@@ -7,6 +7,7 @@ pub struct Machine {
     pub head: usize,
     pub current_state: String,
     pub states: HashMap<String, State>,
+    pub steps: u64,
 }
 
 impl Machine {
@@ -16,6 +17,7 @@ impl Machine {
             head: 0,
             current_state: start_state,
             states,
+            steps: 0,
         }
     }
 
@@ -44,6 +46,8 @@ impl Machine {
             if self.current_state == "halt" {
                 break;
             }
+
+            self.steps += 1;
         }
     }
 
@@ -57,7 +61,10 @@ impl Machine {
         for x in &self.tape {
             print!("{x} ");
         }
-        print!("] state: {0}\n  ", self.current_state);
+        print!(
+            "] state: '{0}', steps: {1}\n  ",
+            self.current_state, self.steps
+        );
 
         for i in 0..self.tape.len() {
             if i == self.head {
