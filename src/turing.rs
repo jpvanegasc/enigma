@@ -1,4 +1,4 @@
-use crate::common::Direction;
+use crate::common::Direction::*;
 use crate::common::State;
 use std::collections::HashMap;
 
@@ -33,10 +33,10 @@ impl Machine {
 
             if operation.move_head.is_some() {
                 match operation.move_head.unwrap() {
-                    Direction::Left => {
+                    Left => {
                         self.head -= 1;
                     }
-                    Direction::Right => {
+                    Right => {
                         self.head += 1;
                     }
                 }
@@ -57,14 +57,13 @@ impl Machine {
             return;
         }
 
+        println!("state: '{0}', steps: {1}", self.current_state, self.steps);
+
         print!("[ ");
         for x in &self.tape {
             print!("{x} ");
         }
-        print!(
-            "] state: '{0}', steps: {1}\n  ",
-            self.current_state, self.steps
-        );
+        print!("]\n  ");
 
         for i in 0..self.tape.len() {
             if i == self.head {
