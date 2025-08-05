@@ -1,7 +1,13 @@
-[package]
-name = "enigma"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+resolver = "3"
+members = ["crates/*"]
 
-[dependencies]
-regex = "1.11.1"
+[workspace.package]
+edition = "2024"
+rust-version = "1.86"
+repository = "https://github.com/jpvanegasc/enigma"
+authors = ["jpvanegasc"]
+
+[workspace.dependencies]
+enigma = {path = "crates/enigma"}
+turing = {path = "crates/turing"}
