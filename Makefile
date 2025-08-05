@@ -1,15 +1,14 @@
 all: target/debug/enigma
 
-target/debug/enigma: src/* ## Compile the enigma interpreter
+target/debug/enigma: ## Compile the enigma interpreter
 	cargo build
 
 .PHONY:
 .SILENT:
 
 init: ## Initialize pre-commit hooks
-	uv venv
-	uv pip install pre-commit
-	uv run pre-commit install
+	uv tool install pre-commit
+	pre-commit install
 
 run: target/debug/enigma ## Run the enigma interpreter
 	cargo run examples/unary-addition.en

@@ -16,13 +16,4 @@ target/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Pre-commit .venv
-.venv/
-
-# Enigma interpreter
-enigma
-
-# VS Code
-.vscode/
-
 .DS_Store
