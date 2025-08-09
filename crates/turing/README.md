@@ -101,7 +101,7 @@ transition function, would be:
 
 ```
 # Define transition function
-delta("k0", 'c') := ("k1", 'c', +1)
+delta("k0", '>') := ("k1", '>', +1)
 delta("k1", '0') := ("k1", '0', +1)
 delta("k1", '1') := (halt, '0', 0)
 
