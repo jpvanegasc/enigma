@@ -14,7 +14,7 @@ $K$ with a special element $s$ (the starting state), and a transition function
 ```
 
 It is assumed that $\Sigma$, $K$, $`\{halt,yes,no\}`$, and $`\{\leftarrow, \rightarrow, −\}`$ are disjoint sets,
-and that $\Sigma$ contains two special elements $\sqcup, \vartriangleright$
+and that $\Sigma$ contains two special elements $\vartriangleright$, $\sqcup$
 representing the start and end of the tape, respectively. We require that for every
 $k \in K$, if $\delta(k, \vartriangleright) = (p, \sigma, d)$ then $\sigma = \vartriangleright$
 and $d \neq \leftarrow$. In other words, the machine never tries to overwrite the
@@ -38,7 +38,9 @@ state $k′$ is equal to $p$, and the new position $i′$ is equal to $i − 1$,
 according to whether $d$ is $\leftarrow$, $\rightarrow$, or $−$, respectively. We express
 this relation between $(x, k, i)$ and $(x′, k′, i′)$ by writing
 
-$$(x, k, i) \xrightarrow{M} (x′, k′, i′)$$.
+```math
+(x, k, i) \xrightarrow{M} (x′, k′, i′) \quad .
+```
 
 A computation of a Turing machine is a sequence of configurations $(x_t, k_t, i_t)$,
 where $t$ runs from $0$ to $T$ (allowing for the case $T = \infty$) that satisfies:
@@ -82,14 +84,14 @@ M:
 ```
 
 Where `delta` takes a state $k \in K$ and a symbol $\sigma \in \Sigma$ and returns a state
-$`k \in (K \cup \{halt, yes, no \} )`$, a direction $`d \in \{ \rightarrow, \leftarrow, -\ }`$,
+$`k \in (K \cup \{halt, yes, no \} )`$, a direction $`d \in \{ \rightarrow, \leftarrow, -\ \}`$,
 and a symbol $\sigma \in \Sigma$:
 
 ```
 delta(k, s) -> k, d, s
 ```
 
-Note the implementation for `delta` should includes the constraint for not going over the
+Note the implementation for `delta` should include the constraint for not going over the
 left boundary of $x$.
 
 The pseudo-code implementation of a Turing machine computation, including defining the
