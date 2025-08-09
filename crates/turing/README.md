@@ -49,9 +49,9 @@ where $t$ runs from $0$ to $T$ (allowing for the case $T = \infty$) that satisfi
 - Each pair of consecutive configurations represents a valid transition, i.e. for $0 ≤ t < T$,
   it is the case that
 
-  ```math
-  (x, k, i) \xrightarrow{M} (x′, k′, i′) \quad .
-  ```
+```math
+(x, k, i) \xrightarrow{M} (x′, k′, i′) \quad .
+```
 
 - If $T = \infty$, we say that the computation does not halt.
 
@@ -64,11 +64,12 @@ machine:
 - The transition function $\delta$ encodes the actual ruleset of the Turing machine. It
   specifies how the machine behaves when a particular symbol $\sigma \in \Sigma$ is read
   when the machine is in a specific state $k \in K$. Such a mapping could be
-  ```math
-  \delta(k=state_1, \sigma=a) = (k=MyIncredibleState, \sigma=b, d=\rightarrow) \\
-  \delta(k=MyIncredibleState, \sigma=b) = (k=2, \sigma=1, d=-) \\
-  \delta(k=2, \sigma=1) = (k=halt, \sigma=1, d=\leftarrow) \\
-  ```
+
+```math
+\delta(k=state_1, \sigma=a) = (k=MyIncredibleState, \sigma=b, d=\rightarrow) \\
+\delta(k=MyIncredibleState, \sigma=b) = (k=2, \sigma=1, d=-) \\
+\delta(k=2, \sigma=1) = (k=halt, \sigma=1, d=\leftarrow) \\
+```
 
 ## Pseudocode Implementation
 
