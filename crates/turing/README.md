@@ -68,7 +68,7 @@ machine:
 ```math
 \delta(k=state_1, \sigma=a) = (k=MyIncredibleState, \sigma=b, d=\rightarrow) \\
 \delta(k=MyIncredibleState, \sigma=b) = (k=2, \sigma=1, d=-) \\
-\delta(k=2, \sigma=1) = (k=halt, \sigma=1, d=\leftarrow) \\
+\delta(k=2, \sigma=1) = (k=halt, \sigma=1, d=\leftarrow) \quad .
 ```
 
 ## Pseudocode Implementation
@@ -106,7 +106,7 @@ delta("k1", '0') := ("k1", '0', +1)
 delta("k1", '1') := (halt, '0', 0)
 
 # Initialize machine
-M.x = ['c', '0', '1', '>']
+M.x = ['>', '0', '1', 'c']
 M.delta = delta
 M.i = 0
 M.k = "k0"
@@ -119,4 +119,4 @@ while M.k != halt:
   M.i += result[2]
 ```
 
-This particular example results in `M.x = ['c', '0', '0', '>']` when `M.k == halt`.
+This particular example results in `M.x = ['>', '0', '0', 'c']` when `M.k == halt`.
